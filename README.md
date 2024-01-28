@@ -1,4 +1,4 @@
-# Welcome to my Source Repository - OOP_Java by giáo.làng
+# Welcome to my Second Repository - OOP_Java by giáo.làng
 
 ## You will find in this repo:
 
