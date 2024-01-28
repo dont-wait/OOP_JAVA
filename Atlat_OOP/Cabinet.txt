@@ -1,0 +1,20 @@
+﻿- oject lẻ (đặc tính + hành vi)
+- oject thùng chứa(container) chứa nhiều object khác bên trong
+
+- svA, svB, svC, 		thayA, thayB, 		congDanA, congDanB
+nhiều bộ phận cơ thể		nhiều bộ phận
+bộ quần áo		làm nhiều việc kiếm tiền
+nhiều môn học tham gia	dạy nhiều môn học
+
+- tủ A -> chứa nhiều sách	[]	
+- tủ B -> chứa nhiều hồ sơ sv	  []
+- kệ C -> chứa nhiều đồ lưu niệm []
+- máy bay X -> nhiều hành khách []
+- rạp A -> nhiều khán giả	[]
+-> nhóm Cái-Tủ, Thùng-Chứa, Container, Cabinet, Shelf
+
+BTVN
+VIẾT ÂPP NHẬP VÀO CÁC CUỐN SÁCH TỪ BÀN PHÍM, LƯU VÀO CÁI TỦ
+IN CÁC CUỐN SÁCH TRONG CÁI TỦ
+SẮP XẾP THEO GIÁ TIỀN TĂNG DẦN
+NGON MENU LUÔN

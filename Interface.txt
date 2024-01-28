@@ -1,0 +1,7 @@
+INHERITANCE
+CÙNG HỌ CHƠI CHUNG, CÙNG PHIÊN BẢN CHƠI CHUNG, CÙNG ĐẶC ĐIỂM & HÀNH ĐỘNG CHƠI CHUNG
+===================================================================================
+INTERFACE
+CÓ 1 CÁCH "PHÂN LOẠI" LỎNG LẺO HƠN, CÁCH CÁC KHUÔN KHÁC NHAU ĐẶC ĐIỂM CHUNG VỚI NHAU
+NHÓM LỎNG LẺO HƠN, MIỄN LÀ CHUNG ???
+ 

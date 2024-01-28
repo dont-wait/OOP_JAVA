@@ -1,0 +1,307 @@
+	CUỘC ĐUA KÌ THÚ diễn ra giữa các ứng viên Dog, Cat, Hamster,...
+- Thông tin các ứng viên bao gồm: tên, năm sinh, cân nặng
+- Dog: chạy tối đa 40km/h
+- Cat: chạy tối đa 50km/h
+- Hamster: chạy tối đa 10km/h
+
+- Hãy in bảng thành tích của từng ứng viên
+
+* HẮC NÃO: SẮP XẾP BẢNG THÀNH TÍCH CHẠY CỦA CÁC ỨNG VIÊN
+
+* Phân tích bài toán:
+- Chạy tối đa? tốc độ chạy biến đổi theo những lần chạy, hàm trả về giá trị
+  biến đổi -> ko return giá trị "cứng - hard code" đc
+	-> hàm random() trong Toán học, sinh số ngẫu nhiên
+
+- chạy thì là hành động
+
+- Dog(tên, năm sinh, cân nặng), hành động run() -> abstract và implement
+- Mèo(tên, năm sinh, cân nặng), hành động run()
+- Hamster(tên, năm sinh, cân nặng), 	  run()
+- Snake					  run()
+- 3 KHUÔN VÌ 3 ĐỨA KHÁC NHAU RÕ RÀNG, NẾU GIÓNG GỌI LÀ 1 CON XYZ NÀO ĐÓ RỒI
+- Sắp xếp: vậy chúng phải chung mảng,
+  Dog is a kind of Mèo -> vớ vẩn
+  Mèo is a kind of Hamster -> vớ vẩn
+  .... vớ vẩn quanh quần 3 thứ
+ Dog, Cat, Hamster MUST BE A KIND OF ???
+ câu is a tự nhiên đọc 1 chiều, tìm đc ??? COI NHƯ SORT ĐÃ XONG
+ Nếu những thứ khác biệt ở chung đc với nhaum thì sẽ xử lí đc data
+
+ Dog, Cat, Hamster IS A ANIMAL ỔN KO SAI, NHƯNG KO HAY
+ Dog, Cat, Hamster is a kind of Pet mới là hay!!!
+HÌNH NHƯ ĐANG NÓI VỀ PHÂN LOẠI MỌI THỨ TRONG CUỘC SỐNG -> NÓ ĐÓ
+
+ Dog, Cat, Hamster... 		-> Pet
+ Elephan, Zebhra, Tiger,	-> ANIMAL
+	Person 			->
+        Cây cối					+ 	CREATURE
+							Sinh vật trên TĐ
+ LOÀI CHI HỌ LỚP BỘ NGÀNH...
+
+Xe máy, xe hơi, xe tải, xe đầu kéo, xe khách	-> is a VEHICLE(phương tiện)
+	máy bay, Tàu, Tàu thủy, Du thuyền
+
+Ghim bấm, kẹp giấy, keo dán, chuốt bút chì, bao tập
+bìa lá, folder, hộp nhựa đựng, dấu, mực, giẻ chùi bảng -> VĂN PHÒNG PHẨM
+
+Cá đông lạnh, Tôm đông lạnh, chân gà, thịt gà, vịt,... -> Thực phẩm đông lạnh
+
+ĐẶT TÊN VÀ PHÂN LOẠI, CÁCH CON NGƯỜI QUẢN LÍ INFO QUANH MÌNH
+f&b
+Horeca
+
+Có 2 LOẠI KHUÔN/CLASS:
+1. KHUÔN/CLASS HOÀN CHỈNH, KO CHỨA HÀM ABSTRACT, CONCRETE CỤ THỂ/RỜI RẠC, RÕ RÀNG
+- các hành động có đủ code
+- Nếu nó có Con, Con ko cần implement gì cả, Cha đã đủ code rồi. Con thích thì @Override
+
+2. KHUÔN/CLASS KHÔNG HOÀN CHỈNH/CHỨA ABSTRACT, HÀM KO CODE
+- bản thân nó ko hoàn chỉnh, vì chỉ có tên hàm mà ko có code, nó vẫn có quyền có hàm 
+  khác mà có code
+- về mặt lí thuyết, khi new ABS class thì khi chấm cái hàm ko code, KO CÓ CODE ĐỂ CHẠY
+- new Cha abstract thì ko có code để CHẠY!!!
+- new Shape(...), new Pet(...). run() . getArea() éo có code lấy dì chạy!!!
+
+- KO NEW CLASS CÓ HÀM ABSTRACT VÌ KO ĐỦ CODE/KO HOÀN THIỆN ĐỂ CHẠY!!!
+
+TRỪ PHI... NẾU VẪN NGOAN CỐ NEW ABSTRACT CLASS THÌ...
+- Nếu nó có Con, thì Con CÓ 2 PHƯƠNG ÁN MÌNH ĐÃ HỌC RỒI (VÔ SINH LUÔN, KO NEW, LÀ ABS
+LUÔN, PHẢI IMPLEMENT VIẾT HẾT CODE CHO HÀM CHA)
+- giả bộ ta tập trung phần IMPLEMENT HÀM CHA, CHA NÓI CON LÀM
+- Con @Override hết hàm abs của Cha, CON có quyền làm thêm dị biệt như bình thường...
+
+* VÙNG NHỚ CỦA CON, VÙNG NEW CỦA CON SẼ CHIẾM THẾ NÀO TRONG RAM (ko care Con kế thừa Cha
+cụ thể hay trừu tượng): BAO GỒM
+
+ - VÙNG NEW CỦA CHA, SUPER() ĐÓ, KO CARE CỤ THỂ/TRỪU TƯỢNG
+   BA SẼ LÀ CÁNH CHIM, ĐƯA CON BAY/EXTENDS MỞ RỘNG THÊM
+   VÙNG NHÓ CON BAO VÙNG NHỚ CHA, ĐỂ CON ĐC KẾ THỪA, CÓ SẴN MÀ DÙNG ĐỒ CHA
+ 
+- PHẦN MỞ RỘNG / EXTENDS, TRONG ĐÂY CHỨA
+  - DỊ BIỆT HOÀN TOÀN TỪ CON, HÀM, BIẾN/ĐẶC ĐIỂM RIÊNG CON. EX: HCN: CÓ THÊM 2 CẠNH
+  - PHẦN @Override/CON TRÙNG TÊN HÀM CHA _ KO BẮT BUỘC NẾU CHA CỤ THỂ!!! THÍCH THÌ LÀM
+					   VÌ ĐẰNG NÀO CX CÓ CHA ĐỦ ĐỂ XÀI
+  - PHẦN @OVERRIDE/CON TRÙNG TÊN HÀM CHA
+		BĂT BUỘC PHẢI CÓ NẾU CHA LÀ ABSTRACT, CHA KO HOÀN HẢO, CON BẮT BUỘC PHẢI CODE
+    PHẢI VIẾT CODE CHO CHA NẾU CHA ABSTRACT
+
+* TỔNG KẾT CÔNG THỨC CON CHƠI VỚI CHA TRỪU TƯỢNG
+
+  CON = NEW CHA()/SUPER() CHA ++++++++++ @OVERRIDE CHO TẤT CẢ CÁC HÀM CỦA CHA
+
+* CÂU HỎI: LÀM SAO ĐỂ CÓ ĐƯỢC 1 OBJECT??? TRONG OOP
+  1. Ta cần 1 Khuôn/Class
+  2. Gọi new + phễu để xin vùng ram/clone vùng ram từ Khuôn + gọi phễu đổ vật liệu vào
+		       new xong là có object, tọa độ object luôn  
+  3. Đặt tên cho object, biến object trỏ vùng new
+  
+- NẾU TA MÚN CÓ 1 HCN:
+  1. Ta cần Khuôn Rectangle() - KHUÔN ĐỦ CODE MỚI HÀNH XỬ ĐC, CHẤM ĐC CHẠY ĐC
+  2. new Rectangle(???)
+  3. Rectangle x = new Rectangle(???)
+ 
+* LIÊN QUAN ĐẾN HÌNH HỌC, BIẾT THỪA CÓ NHỮNG HÌNH BIẾT RÕ NHÓM CON V, TR, CN, TF, VÀ THUỘC CHA SHAPE
+* CÓ NHỮNG HÌNH CHỈ BIẾT NÓ LÀ HÌNH, KO BIẾT TÊN GỌI NHÓM CON, NHÓM CHI TIẾT, CHỈ BIẾT LÀ HÌNH
+  VẪN LÀ SHAPE MÀ, S() LÀM SAO, TÍNH = CÁCH ĐO, VÌ MÀY KO LÀ DẠNG HÌNH QUEN THUỘC 
+  NẾU QUEN THUỘC THÌ TAO ĐÃ ĐẶT TÊN NHÓM CON CHO MÀY
+
+* CÓ XUẤT HIỆN NHỮNG ĐỐI TƯỢNG LẠC LOÀI, KO HÌNH DẠNG QUEN THUỘC, HÌNH CẮT NGẪU NHIÊN, KO BIẾT XẾP VÀO NHÓM NÀO NGOẠI TRỪ NHÓM CHA!!!
+* THEO quan điểm object thì đã có object dc tạo ra, có 1 hình mà, mà ko biết Khuôn là gì
+  chỉ biết nó là thuộc Khuôn Cha, vì là HH
+  TA SẼ CÓ CÁCH TẠO OBJECT VÔ ĐỊNH, KO QUEN THUỘC, KO PHÂN NHÓM CON ĐC, TA NHÌN NÓ
+  THEO DẠNG ĐÚC TỪ KHUÔN CHA, VÌ LÚC NÀY TA GỌI NÓ LÀ HÌNH HỌC, VẬY NÓ PHẢI XP TỪ KHUÔN HÌNH HỌC
+  TỨC LÀ TA NEW HÌNH HỌC
+DÙNG KĨ THUẬT MƯỢN GIÓ BẺ MĂNG, MƯỢC SHAPE TẠO OBJECT, VÌ TA THIẾU 1 CÁI KHUÔN CON CỤ THỂ
+NẾU CÓ KHUÔN CỤ THỂ (FULL CODE) NEW NGAY KHUÔN NÀY RA HÌNH MÌNH CẦN
+
+CÓ HÌNH, NHƯNG KO RÕ, KO BIẾT TÊN KHUÔN, NHƯNG SURE LÀ 1 DẠNG CON CỦA CHA, LẤY CHA NEW LUÔN CHO RỒI
+
+CON = NEW CHA/SUPER CHA + EXTENDS @OVERRIDE
+HÌNH CÀ CHỚN VỪA RỒI MÀY LÀ OBJECT CON RỒI, VÌ MÀY LÀ HÌNH
+NÊN TAO SẼ NEW CHA + PHẦN @OVERRIDE VIẾT CODE CHO ĐỦ -> VẪN ĐẢM BẢO CÔNG THỨC CỦA CON...
+
+NEW CHA + CODE @ THÌ VẪN ĐẢM VẢO CỘNG THỨC VÙNG RAM CON NHƯ XƯA NAY - MÀY ĐỦ CODE
+    TẠO OBJECT MÀ ÉO CẦN CLASS RIÊNG, MƯỢN CHA MÀ LÀM, CLASS RIÊNG MÀ ÉO CẦN ĐỀ CẬP, GỌI LÀ 
+    CLASS LÀM BIẾNG, CLASS KO CẦN TẠO RA, CLASS KO THÈM LÀM CỤ THỂ RA, CLASS ẨN DANH, ANONYMOUS
+
+VẪN NEW ĐC OBJECT CON CỦA SHAPE MÀ ẾU CẦN 1 CLASS CON CỤ THỂ, VẠY THÌ VÙNG RAM CON NÀY CHÍNH LÀ
+ĐẠI DIỆN CHO 1 CLASS LÀM BIẾNG LÀM RIÊNG/ĐẶT TÊN, CLASS ẨN DANH
+
+TẠO OBJECT ON THE GO, LÀM BIẾNG TẠO CLASS CON CÓ SẴN!!! gọi là ANONYMOUS CLASS
+KO CHỈ ĐỊNH RÕ TÊN CLASS CON MÀ VẪN CÓ OBJECT CON
+
+KHAI CHA NEW CHA, NẾU CHA ABS, MƯỢN GIÓ BẺ MĂNG, CHA NEW ĐỠ CHO CON MỞ RỘNG RA ĐI CON
+, VIẾT CODE ON THE GO, ĐỪNG QUÊN CHẤM PHẨY, MÀY LÀM BIẾNG TẠO CLASS CON
+ĐỂ CLONE CHO NHANH, MÀY CHƠI TRÒ NEW TAO NGAY, TAO HỖ TRỢ VÙNG EXTENDS HOÀN THIỆN
+CODE OVERRIDE CHO TAO, BA SẼ LÀ CÁNH CHIM, ĐƯA CON NEW ON THE GO
+-> ANONYMOUS CLASS, VÙNG RAM VẪN BỰ NHƯ LÀM CLASS RỜI, LÀM BIẾNG ĐẶT TÊN VÙNG
+RAM BỰ, VÙNG RAM ANONYMOUS
+
+
+* ÔN LẠI ANONYMOUS CLASS - TẠO OBJECT MÀ KO CHỈ ĐỊNH RÕ CLASS CÓ SẴN
+			 - MƯỢN NEW CLASS CHA ABSTRACT ĐỂ CÓ ĐC VÙNG
+			 - SUPER = EXTENDS/OVERRIDE
+			 
+			 - VÙNG RAM OBJECT CON GIỐNG Y CHANG VÙNG RAM MỌI OBJECT CON
+                           KHÁC TẠO TỪ CLASS CÓ SẴN
+			 - VÙNG RAM BỰ NÀY VỀ LÍ THUYẾT XUẤT PHÁT TỪ
+                         - KHUÔN CON NÀO ĐÓ MÀ TA KO THÈM LÀM KHUÔN
+                           VÙNG RAM BỰ NÀY GỌI LÀ THUỘC VỀ CLASS VÔ DANH 
+- Truyền thống ta tạo object Con là ta phải có Clăss Con trước 
+  (Rectangle, Square, Disk)
+  với các hàm @Override viết sẵn, viết 1 lần, xài cho mọi lần NEW 
+  Ta sẽ làm class Con nếu ta biết chắc chắn sẽ dùng để nhân bản đc nhiều
+  object Con trong tương lai, nó đầy đủ code theo kiểu công thức xử lí
+
+- Cách ON THE GO, ko cần class Con có sẵn, ta lợi dụng class Cha new
+  luôn. New luôn mới chỉ có đc super Cha, chưa có đc phần code cho Cha 
+  tụ bung ra thêm 1 phần {... ta viết nốt code cho hàm @Override}
+  Đừng quên chấm phẩy vì nó tương đương new Clas Con();
+
+  Cha object LẺ = new Cha(...); //ĂN ĐÒN LIỀN, VÌ CHA KO HOÀN HẢO
+				//CHỨA ABS, LÁT HỒI object lẻ. hàm abs
+				// ko có code để chạy
+				//CHẤM CHA NHƯNG CON SẼ ƯU TIÊN QUA MẶT
+				//CẦN CÓ CODE CỦA CON @OVERRIDE
+			//lỡ new Cha cần viết luôn CODE ON THE GO
+
+
+  Cha object LẺ = new Cha(...) {
+	@Override
+ 	Các hàm Cha cần có code
+  
+  };
+
+  Shape r1 = new Rectangle(...); trong đây có sẵn super + @override làm sẵn rồi
+  Shape xxx = new Shape(...) {	//BA SẼ LÀ CÁNH CHIM
+		@Override	//ĐƯA CON EXTENDS THẬT XA, QUA MẶT
+		Các hàm cần code cho Cha here();
+	      };
+  new Con = new Cha + phần mở rộng ;              kết thúc ~~~
+  new HCN = new Cha + phần mở rộng làm sẵn rồi ;
+
+* GIÁ PHẢI TRẢ: ĂN THEO, NEW THEO CONTRUCTER CỦA CHA, MÌNH KO TẠO CLASS
+  RỜI KIỂU HCN, HV ĐỂ CÓ PHỄU RIÊNG
+                TỰ VIẾT LẠI CODE CHO CÁC HÀM @OVERRIDE DO MÌNH KO LÀM
+		KHUÔN CÓ SẴN
+  LỢI ĐIỂM LÀ BẤT CỨ LÚC NÀO CẦN NEW OBJECT LÀ LÀM ĐC LIỀN
+  VÌ ON THE GO, MƯỢN CHA NEW~~~ SUPER
+
+* DÙNG KHI CẦN OBJECT TRONG 1 TÌNH HUỐNG NÀO ĐÓ MÀ KO MẤT CÔNG PHẢI TẠO
+  RA CLASS... HỌC SAU NÀY
+
+* ĐÍCH ĐẾN LÀ OBJECT, VÙNG NEW, CÓ CODE ĐỂ CHẤM CHẠY
+* KHUÔN/CLASS GIÚP MÌNH TẠO OBJECT NHANH!!!
+* LẬP TRÌNH OOP: TẠO VÙNG RAM CHỨA CODE/HÀM XỬ LÍ ĐỂ GỌI MÀ XÀI
+  LẬP TRÌNH NÓI CHUNG: VIẾT HÀM XỬ LÍ DATA
+================================================================================
+TỔNG KẾT CHUNG CHO KẾ THỪA - THỪA HƯỞNG ĐẶC ĐIỂM & HÀNH VI
+			   - CÓ HỌ HÀNG, BÀ CON, VÌ CHUNG ĐẶC ĐIỂM
+			   - LIÊN QUAN ĐẾN CÂY PHÂN LOẠI, PHÂN LOẠI OBJ
+			     TRONG CUỘC SỐNG CỦA CON NGƯỜI
+
+			     LOÀI, CHI, BỌ, LỚP, NGÀNH
+			     VECHICLE, PET, ANIMAL, VĂN PHÒNG PHẨM,....
+IS A KIND OF, ĐỌC 1 CHIỀU
+CON LÀ 1 PHIÊN BẢN CỦA CHA - HV LÀ 1 HCN, MÈO LÀ 1 THÚ-CƯNG
+CON THỪA HƯỞNG CÁC ĐẶC ĐIỂM VÀ HÀNH VI CỦA CHA
+
+* CHA CỤ THỂ - CON CỤ THỂ (đủ code cho cả 2)
+		   Con có thể @Override nếu muốn, ko ép 
+		   Con có thể có dị biệt nếu muốn, ko ép
+		   Thực ra đã có đủ từ Cha hoàn hảo rồi
+  Khai Cha new Cha, dùng Cha lun, Cha hoàn hảo
+  Khai Cha new Con, đa hình xảy ra, Con qua mặt hàm @ Cha
+  Khai Con new Con
+
+* CHA TRỪU TƯỢNG - CON HOẶC TRỪU TƯỢNG ( vô sinh, ko new đc object)
+		   CON HOẶC PHẢI CODE CHO CHA
+			CON bắt buộc phải @Override cho Cha
+                        Con có thể có dị biệt nếu muốn
+			Phải hoàn tất giấc mơ của Cha!!!!!!!
+			Vì Cha chỉ nói thoy, chưa làm, chưa hoàn hảo
+  Khai Cha new Cha {...@OVerride}; //anonymoust do làm biếng tạo Con sẵn
+	//TẠO OBJECT CON RỒI, new Cha mà phải thêm code thì ko là Cha(mượn Cha, Cha sẽ là cánh chim cho con ON THE GO  		
+
+  Khai Cha new Con, đa hình xảy ra, Con qua mặt hàm @ Cha
+  Khai Con new Con
+=========================================================================================================================
+CUỘC ĐUA KÌ THÙ AGAIN...
+Hamster		------------ > Pet (nhân tử chung của đám Con)
+Dog				   (đặc điểm & hành vi)
+Cat
+Sóc
+
+2 anh bạn chạy xe Exciter rượt theo con Dog
+trên đường đua lúc này có Pet và Motor cùng đua, cùng lane đường, đua cùng nhau, so
+tốc độ, cùng Mảng trên đường phố!!!
+- Mô phỏng lại trong lập trình thì: Pet và Motỏ phải cung mảng!!! mảng nào???
+  Cùng mảng thì phải cùng kiểu data type
+  Pet is kind of Motor -> gẫy
+  Motor is kind of Pet -> gẫy, Motỏ là xế cưng, ko là thú cưng
+
+  Chỉ vì cùng rượt đuổi nhau, nên mới chung đường
+  CẢ 2 CÓ CÙNG 1 MỤC ĐÍCH, HÀNH ĐỘNG, MỘT THẰNG CHẠY ÉP XUNG ĐỂ THOÁT
+  					  THẰNG KIA RƯỢT HẾT TAY GA ĐỂ BẮT ĐC THẰNG KIA
+  TA KO CARE CHUYỆN GÌ KHÁC, NGOÀI 2 ĐỨA ĐUA VỚI NHAU
+  TA FOCUS VÀO HÀNH ĐỘNG CHẠY, HÀNH ĐỘNG ĐUA, HÀNH ĐỘNG RƯỢT, KO CARE CHUYỆN GÌ KHÁC
+  TA ĐG CHUNG MỤC ĐÍCH, HÀNH ĐỘNG, RÕ RÀNG TA ĐG LÀ HỘI-ĐUA-THỦ
+
+  HỘI ĐUA THỦ LÀ HỘI/GOM NHÓM NHỮNG GÃ CHỈ TẬP TRUNG VÀO VIỆC DUY NHẤT, ĐUA!!!
+
+  TA CHỈ TẬP TRUNG VÀO HÀNH ĐỘNG, TA ĐÃ CHƠI CHUNG ĐC VỚI NHAU, KO CARE XUẤT THÂN, NGOÀI 
+ĐỜI LÀ CÓ THẬT
+  ĐÂY LÀ CÁCH TA LẬP HỘI NHÓM Ở NGOÀI ĐỜI
+
+  HỘI NHÓM LÀ GOM NHỮNG THÀNH VIÊN CÓ CHUNG SỞ THÍCH, CHÍ HƯỚNG HÀNH ĐỘNG, KO CARE NGUỒN
+GỐC XUẤT THÂN
+  VÍ DỤ: CLB-ĐI-PHƯỢT, PHƯỢT-THỦ gom những bạn từ khắp nơi, chỉ thích, quan tâm:
+				 CUỘC ĐỜI LÀ NHỮNG CHUYẾN HÀNH XÁC
+                                 Chấp bạn là Student, Worker, Lectuter, Freelancer,
+				 Employee, miễn bạn sẵn sàng lên đường
+				 BẠN LÀ MEMBER OF HỘI-PHƯỢT-THỦ
+				 GOM NHÓM VỀ HỘI NÀO ĐÓ - 1 CLASS PHƯỢT-THỦ XH
+
+ VÍ DỤ: Bạn là Worker, Student, Lecturer, Pupil, Employee bạn cần cải thiện tiếng anh
+ bạn tham gia vào CLB-Tiếng-Anh, bạn đc đòi hỏi rằng chỉ cần speak EL
+ ko care bạn xuất thân từ đâu, chúng ta chơi chung TA, cùng giao tiếp TA
+ Worker, Student, Lecturer, Pupil, Employee IS A MEMBER OF ENGLISH CLUB
+								method duy nhất: speakEnglish()
+ VÍ DỤ: Worker, Student, Lecturer, Pupil, Employee,...
+ ra phố Bùi Viện và bạn thuê 1 cái bình Shisha, đổ thuốc Lào Ả Rập cả đám cùng kéo cần
+ - hút Shisha
+ Worker, Student, Lecturer, Pupil, Employee IS A MEMBER OF SHISHAER
+ chúng mình là đám/gã nghiện ngập Shisha, 		tham gia hội, phải hút theo cách nào đó
+
+ MỖI HỘI TẬP TRUNG VÀO HÀNH ĐỘNG MÀ HỘI VIÊN CẦN PHẢI THEO!!! CHẤP HỘI VIÊN ĐẾN TỪ ĐÂU
+ 
+ VÍ DỤ: Worker, Student, Lecturer, Pupil, Employee TIẾP TỤC PHE SHISHA
+ HƯNG PHẤN TAY LÁI, RỦ NHAI ĐI TỐC ĐỘ, LÊN CON EXCITER, WINNER, RGV, REBEL,...
+ KÉO TAY GA... TĂNG TỐC, chỉ tập trung vào tốc độ,... IS A MEMBER OF
+						      IS A 		DEATH-RACÊR
+ CLB ĐUA-ĐẾN-CHẾT XUẤT HIỆN VỚI HÀNH ĐỘNG ĐUA GÁC TAY GA, GÁC KIM ĐỒNG HỒ
+
+ chung hành động, chung tiếng nói, ở chung với nhau phần này thôi, chung mảng, chung kiểu,
+chung member, chung clb, GOM NHÓM THEO HÀNH ĐỘNG, GOM THEO INTERFACE
+ tham gia clb, ta chỉ quan tâm h/đ
+
+
+ KHUÔN NÀY DÍNH DÁNG KHUÔN KIA 1 XÍU VỀ HÀNH ĐỘNG
+ ĐỂ CHÚNG CÓ THỂ CHUNG NHAU 1 CHÚT GÌ ĐÓ TRÊN HÀNH ĐỘNG
+ TỤ TẬP ĐC 1 NHÓM CÙNG HÀNH ĐỘNG, CÓ NHÓM THÌ CÓ TÊN, CÓ CLASS - CLASS LÀ CÁCH GOM NHÓM
+
+2 HÌNH THỨC GOM NHÓM 
+
+ - GOM TRÊN ĐẶC ĐIỂM VÀ HÀNH VI - INHERITANCE (HỌ HÀNG BÀ CON)
+ INHERITANCE/ABS CLASS: TÊN CỦA 1 DÒNG HỌ NHIỀU CON CHÁU CHIA SẼ DĐ HVI
+
+ - GOM TRÊN HÀNH VI, TỤ TẬP NHAU LÀM GÌ ĐÓ -INTERFACE - CHUNG GIAO TIẾP (HỘI NHÓM)
+ INTERFACE: TÊN CỦA 1 HỘI NHÓM ĂN CHƠI HÀNH ĐỘNG
+
+ IS - A - KIND - OF CHẶT CHẼ TRONG PHÂN LOẠI (DĐ VÀ HVI)
+
+ IS - A - MEMBER - OF (G.L CHẾ RA) HỘI-NÀO-ĐÓ (HVI, MỤC ĐÍCH) LỎNG LẺO VIỆC KẾT HỢP
+
+TUI, BẠN BÊN YOUTUBER CỦA TUI, NGỒI CHUNG VỚI NHAU VÌ YÊU THÍCH CODE, KO CARE CHUYỆN GÌ 
+KHÁC, CHÚNG TA THUỘC CLB YÊU-CODE-ĐẾN-CẢ-ĐỜI, NGỒI CHUNG BUỔI LIVE, CODE HOY()
