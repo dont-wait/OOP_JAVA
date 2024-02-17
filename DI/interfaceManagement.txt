@@ -1,0 +1,29 @@
+public interface Filter<T> {
+
+	public boolean check(<T> x);
+}
+
+public List<Student> getStudentsSE(Filter<Student> cond) {
+
+	List<Student> result = new ArrayList();
+	for (Student x : stuList)
+		if(cond.check(x))
+			result.add(x);
+	return result;
+}
+
+public static void getListStudentSEbyUsingGPA() {
+	StudentManager sm = new StudentManager();
+	Filter<Student> SEFilter = new Filter<Student> {
+	
+		@Override
+		public boolean check(Student x) {
+			if(x.GPA >= 5)
+				return true;
+			return false;
+		}
+	}
+	List<Student> list = sm.getStudents(SEFilter)
+	for (Student x : list)
+		x.showProfile;
+}

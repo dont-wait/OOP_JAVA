@@ -1,0 +1,19 @@
+* Interface: là một cuộc chơi giữa các bên có liên quan, chơi theo 1 cách thức đinh trước
+(chung giao tiếp, protocol)
+
+* Interface: là một bộ tiêu chuẩn chung được đặt tên, liệt kê các tiêu chí cần có, các tiêu
+chuẩn sẽ giúp các bên có liên quan dễ giao tiếp, chấp nhận nhau hơn
+
+TCVN
+
+* Interface: là một CLB có các tiêu chí hoạt động "chung chung" (hành động abstract)
+		 ai cùng chí hướng thì mới tham gia (implement)
+
+Bộ tiêu chí y/c 				để ae theo đó mà hành động (implement/cụ thể)
+	nói hoy, ý tưởng hoy 
+      chưa làm
+
+* Ifterace: class "CHA" đặc biệt, chứa hàm ko có code (abstract), sau này cho phép hàm có
+code nhưng là ...
+
+POLYMOPHISM: đa hình đa ánh xạ, từ 1 hàm có n cách cài đặt code khác nhau

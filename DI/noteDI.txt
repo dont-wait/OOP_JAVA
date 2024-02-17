@@ -1,0 +1,169 @@
+				
+public List<Student> getStudents(Filter<Student> filter) {
+	List<Student> result = new ArrayList();
+
+	for (Student x : stuList)
+		if(filter.check(x)
+			result.add(x)
+	return result;
+}
+//truyền tham trị, void f(int x) x đại diện cho 1 giá trị - pass by value
+//truyền tham chiếu void f(Student x) x đại diện 1 object, nằm chỗ khác
+//							//pass by reference
+//truyền data type, data type lại là 1 tham số
+//			  void f(???? x)	??? là data type nào đó, x sẽ ứng với data type đó
+//			 void f(<T> x), xài f(<Student> x)
+//						  f(<Lecturer> x)	=>> GENERIC
+
+//truyền nguyên 1 hàm vào trong tham số, pass by function, đưa 1 hàm vào 1 hàm
+//				void f(??? x), lại là 1 hàm khác,
+//							LAMBDA EXPRESSION, ĐƯA HÀM VÀO HÀM
+//						@FUNCTIONAL PROGRAMMING
+								
+public interface Filter<T> {
+	public boolean check(T x);
+}
+
+C1: làm class Filter rời	
+//tham gia CLB, bộ tiêu chuẩn, thì phải làm gì cụ thể, implement
+//cho hàm abstract, cụ thể rồi, ko chung chung trừu tượng nx
+//class rời, phải có create class -> CONCRETE CLASS
+public class FilterBySE implements Filter<Student> {
+	
+	@Override
+	public boolean check(Student x) {
+		return x.getMajor().equalsIgnoreCase("SE");
+//		if(x.getMajor().equalsIgnoreCase("SE"))
+//			return true;
+//		return false;
+	}					
+}	
+
+public static void testGetStudentsByUsingDIAndConcrete() {
+	Filter<Student> filterBySe = new FilterBySe();
+	List<Student> result = sm.getStudents(filterBySE);	//tao trích cho mày câu if
+					//cảnh giới cao, ko tạo class rời
+					//mà if ngay tại lúc xài cái hàm .getStudents()
+					//ON THE GO, LÚC XÀI HÀM, MỚI VIẾT IF
+	sout("The list of SE students");
+	for (Student x : result)
+		x.showProfile();
+}
+//Khai Cha new Con
+//Khai Con new Con
+//Cha abstract thì khai Cha new Cha -> Anonymous Class
+
+C2: ON THE GO 
+ public static void testGetStudentsByUsingDIAndAnonymousClass() {
+	//hàm .getStudents() chỉ cần object chứa hàm check() có code
+	//				true/false để nó add vào wish-list và return sau cùng
+	//ta focus vào việc làm hàm check() thay vì chú ý vào tên class rời chứa hàm
+	//đây là ý tưởng của class vô danh - Anonymous Class - ko thèm đặt tên class
+	//như truyền thống
+	//Filter<Student> filterBySEGt8 = new class rời CÓ SẴN hàm check() rồi
+	Filter<Student> filterBySEGt8 = new Filter<Student> {
+		@Override
+		public boolean check(Student x) {
+			return x.getMajor().equalsIgnoreCase("SE") && x.getGPA >= 8;		
+
+		}
+
+	};	//VIP giống như Filter x = new FilterByX();	 
+	StudentManager sm = new StudentManager();
+	List<Student> result = sm.getStudents(filterBySEGt8);
+	sout("The list of SE students");
+		for (Student x : result)
+			x.showProfile();
+ }			
+								
+thí nghiệm
+	public static void testInterface() {
+		List<Student> list = new List() {
+			......
+			code và code
+			vỡ mặt, 1 đống hàm, mún tự độ lại ArrayList của riêng mình h
+		};
+	
+	}
+C3: Lambda Expression
+	public static void testGetStudentsByUsingDIAndLambdaExpressionV2() {
+	
+		//Filter<Student> filterByIA =  x -> x.getMajor().equalsIgnoreCase("IA") && x.getGPA >= 8; //okie
+
+		//kết quả sử dụng
+		StudentManager sm = new StudentManager();	
+		
+		//List<Student> result = sm.getStudents(x -> {return x.getMajor.equalsIgnore("IA") && x.getGPA < 5)};
+		List<Student> result = sm.getStudents(x -> x.getMajor.equalsIgnore("IA") && x.getGPA < 5);//m đưa đối tượng nhưng t chỉ cần hàm
+		
+		sout("The list of SE students");
+			for (Student x : result)
+				x.showProfile();
+
+	public static void testGetStudentsByUsingDIAndLambdaExpression() {
+		
+		//chuẩn bị object Filter đưa vào hàm
+		//Filter<Student> filterByIA = new Class rời if IA;
+		//Filter<Student> filterByIA = new Filter() {....code @Override viết sẵn IA};
+		
+		//Filter<Student> filterByIA = (Student x) -> {return true};
+		//Filter<Student> filterByIA = (Student x) -> {return x.getMajor().equalsIgnoreCase("IA") && x.getGPA >= 8;}; //okie
+		//Filter<Student> filterByIA =  x -> {return x.getMajor().equalsIgnoreCase("IA") && x.getGPA >= 8;}; //okie
+		
+		Filter<Student> filterByIA =  x -> x.getMajor().equalsIgnoreCase("IA") && x.getGPA >= 8; //okie
+
+		//kết quả sử dụng
+		StudentManager sm = new StudentManager();
+		List<Student> result = sm.getStudents(filterBySEGt8);
+		sout("The list of SE students");
+			for (Student x : result)
+				x.showProfile();
+	}
+	
+	public List<Student> getAllStudents() {
+	
+
+		return stulist;
+	}
+
+	public static void testInterfaceV2() {
+		List<Student> list = new StudentManager().getAllStudents();
+		Comparator<Student> can (o1, o2) -> Double.compare(o1.getGPA(), o2.getGPA());
+		Colections.sort(list, can);
+		sout("The student list after sorting ascending by gpa");
+		for(Student x : list)
+			x.showProfile
+	}
+
+	public static void testInterface() {
+	
+		//new Student("A", "B", 0, 0, "C").showProfile();		
+	
+		List<Student> list = new StudentManager().getAllStudents();
+		Comparator<Student> can = new Comparator<Student>() {
+			@Override
+			public int compare(Student o1, Student o2) {
+				//if(o1.getGPA() > o2.getGPA())
+				//	return 1;	//tao lớn hơn mày
+				//else if (o1.getGPA() == o2.getGPA())
+				//	return 0;
+				//return -1;
+				
+				return Double.compare(o1.getGPA(), o2.getGPA());
+			}
+
+		}
+		Collections.sort(list, c); 	//DI, đưa vào cái cân 2 sv cho tao
+						//tao hàm sort() mới bt cách ss 2 sv theo cách
+						//của mày, vô chừng cách
+						//chích cách cảu mày, sao tao bt
+						//gọi hàm gì của mày, tao thống nhất
+						//tao vói mầy chơi qua Interface có sẵn hàm
+						//Interface chuyên đi cân 2 sv, Comparator
+						//Bộ TC Cân, có hàm check(2 sv) lớn bé
+						//			compare(o1, o2) -> lớn bé bằng		
+						//việc đổi chỗ là việc của tao, chỉ cần cách đổi
+						//chích cách đổi bên ngoài đưa vào
+						//qua hàm compare(sv1, sv2)	của FI Comparator
+						//chỉ có 1 hàm compare() - LAMBDA EXPRESSION
+}
