@@ -53,12 +53,13 @@ public class StudentManagementV2 {
                     System.out.println("Sorting completed!!!");
                     break;
                 case 4:
-                    Student xxx = tuSE.searchAStudent("MANH BEO");
-                    if (xxx == null) {
-                        System.out.println("NOT FOUND!!!");
-                    } else {
-                        xxx.showProfile();
-                    }
+//                    Student xxx = tuSE.searchAStudent("MANH BEO");
+//                    if (xxx == null) {
+//                        System.out.println("NOT FOUND!!!");
+//                    } else {
+//                        xxx.showProfile();
+//                    }                     //Hard code!!!
+                    tuSE.searchAStudent();
                     break;
                 case 5:
                     if (tuSE.SinhVienTrung() != -1) {
@@ -68,12 +69,17 @@ public class StudentManagementV2 {
                     }
                     break;
                 case 6:
-                    int viTriSinhVienMuonXoa;
-                    System.out.print("Mời bạn nhập sinh viên muốn xóa #");
-                    viTriSinhVienMuonXoa = Integer.parseInt(sc.nextLine());
-                    tuSE.deleteAStudent(viTriSinhVienMuonXoa - 1);
+                    //ko nên
+//                    int viTriSinhVienMuonXoa;
+//                    System.out.print("Mời bạn nhập sinh viên muốn xóa #");
+//                    viTriSinhVienMuonXoa = Integer.parseInt(sc.nextLine());
+                    //tuSE.deleteAStudent(viTriSinhVienMuonXoa - 1);
                     break;
                 case 7:
+                    //nhập mã id đi rồi tao tìm cho
+                    
+                    
+                    
                     break;
                 default:
                     System.out.println("Please choose 1..7");
@@ -84,7 +90,7 @@ public class StudentManagementV2 {
     }
 
     public static void printMenu() {
-        int choice;
+        
         System.out.println("===========================");
         System.out.println("Welcome you to FPT Academic");
         System.out.println("1. Add a student");

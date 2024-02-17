@@ -59,7 +59,7 @@ Có 2 LOẠI KHUÔN/CLASS:
 2. KHUÔN/CLASS KHÔNG HOÀN CHỈNH/CHỨA ABSTRACT, HÀM KO CODE
 - bản thân nó ko hoàn chỉnh, vì chỉ có tên hàm mà ko có code, nó vẫn có quyền có hàm 
   khác mà có code
-- về mặt lí thuyết, khi new ABS class thì khi chấm cái hàm ko code, KO CÓ CODE ĐỂ CHẠY
+- về mặt lí thuyết, khi new ABSTRACT class thì khi chấm cái hàm ko code, KO CÓ CODE ĐỂ CHẠY
 - new Cha abstract thì ko có code để CHẠY!!!
 - new Shape(...), new Pet(...). run() . getArea() éo có code lấy dì chạy!!!
 
@@ -76,7 +76,7 @@ cụ thể hay trừu tượng): BAO GỒM
 
  - VÙNG NEW CỦA CHA, SUPER() ĐÓ, KO CARE CỤ THỂ/TRỪU TƯỢNG
    BA SẼ LÀ CÁNH CHIM, ĐƯA CON BAY/EXTENDS MỞ RỘNG THÊM
-   VÙNG NHÓ CON BAO VÙNG NHỚ CHA, ĐỂ CON ĐC KẾ THỪA, CÓ SẴN MÀ DÙNG ĐỒ CHA
+   VÙNG NHỚ CON BAO VÙNG NHỚ CHA, ĐỂ CON ĐC KẾ THỪA, CÓ SẴN MÀ DÙNG ĐỒ CHA
  
 - PHẦN MỞ RỘNG / EXTENDS, TRONG ĐÂY CHỨA
   - DỊ BIỆT HOÀN TOÀN TỪ CON, HÀM, BIẾN/ĐẶC ĐIỂM RIÊNG CON. EX: HCN: CÓ THÊM 2 CẠNH
