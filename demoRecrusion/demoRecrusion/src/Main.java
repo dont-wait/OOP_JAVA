@@ -50,7 +50,7 @@ public class Main {
     }
     //tìm số Fibonaci thứ n
     public static int Fibo(int n) {
-        //1. bài toán cơ
+        //1. bài toán cơ sở
         System.out.println("Tinh: F["+ n + "]");
         if(n <= 2)
             return 1;
