@@ -60,6 +60,22 @@ public class MyLinkedList {
         }
             
     }
+    public static void printLinkedListV2(Node head) {
+        if(head == null)
+            System.out.println("List is empty");
+        else {
+            //Node temp = head;
+            while(head != null) {
+                System.out.print(head.value);
+                head = head.next;
+                if(head != null) {
+                    System.out.print("->");
+                }else
+                    System.out.println();
+            }
+        }
+            
+    }
     
     public static void main(String[] args) {
         Node n1 = new Node(1);
@@ -112,7 +128,7 @@ public class MyLinkedList {
         //Node newNode = addToHead(n1, 0);
         Node newNode = addToTail(n1, 0);
 
-        printLinkedList(newNode);
+        printLinkedListV2(newNode);
         
     }
     
