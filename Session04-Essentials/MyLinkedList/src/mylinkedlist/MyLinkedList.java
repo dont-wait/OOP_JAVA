@@ -77,6 +77,87 @@ public class MyLinkedList {
             
     }
     
+    public static Node addToIndex(Node headNode, int value, int index) {
+        
+        if(index == 0)
+            return addToHead(headNode, value);
+        else {
+            
+            //B1: Tim vi tri can them
+            Node newNode= new Node(value);
+            Node curNode = headNode;
+            int count = 0;
+            while(curNode != null) {
+                count++;
+                if(count == index) {
+                    //Thuc hien add
+                    
+                    newNode.next = curNode.next; 
+                    curNode.next = newNode;
+                    break;
+                }
+                curNode = curNode.next;
+                
+            }    
+        }
+        return headNode;
+    }
+    
+    public static Node remove(Node headNode) {
+        if(headNode != null)
+            return headNode.next;
+        return headNode;
+    }
+ 
+    public static Node removeAtTail(Node headNode) {
+        if(headNode == null) 
+            return null;
+        Node lastNode = headNode;
+        Node prevNode = null;
+        while(lastNode.next != null) {
+            prevNode = lastNode;
+            lastNode = lastNode.next;
+        }
+        
+        if(prevNode == null)
+            return null;
+        else {
+            prevNode.next = lastNode.next;  //prev noi vo NULL
+        }
+        return headNode;
+    }
+    
+    public static Node removeAtIndex(Node headNode, int index) {
+        if(headNode == null || index < 0)
+            return null;
+        if(index == 0) 
+            return remove(headNode);
+        boolean bIsFound = false;
+        Node currNode = headNode;
+        Node prevNode = null;
+        int  count = 0;
+        while(currNode.next != null) {
+            if(count == index) {
+                //remove
+                bIsFound = true;
+                break;
+            }
+            prevNode = currNode;
+            currNode = currNode.next;
+            count++;
+        }
+        //remove Curr
+        if(bIsFound) {
+            if(prevNode == null) {  //CurrNode is lastNode
+                return null;
+            }else {
+                prevNode.next = currNode.next;
+            }
+        }
+        return headNode;
+        
+    }
+    
     public static void main(String[] args) {
         Node n1 = new Node(1);
         Node n2 = new Node(2);
@@ -95,8 +176,8 @@ public class MyLinkedList {
 //        printLinkedList(n1);
 //        printLinkedList(n2);
 //        printLinkedList(n3);
-////        n1 = addToHead(n2, 0);
-////        printLinkedList(n2);
+//        n1 = addToHead(n2, 0);
+//        printLinkedList(n1);
 ////        
 ////        n2 = addToHead(n2, 0);
 ////        printLinkedList(n1);
@@ -126,10 +207,22 @@ public class MyLinkedList {
         
         //VALUE MỚI SẼ LÀ CỦA THẰNG HEAD.NEXT
         //Node newNode = addToHead(n1, 0);
-        Node newNode = addToTail(n1, 0);
-
-        printLinkedListV2(newNode);
+        printLinkedListV2(n1);
+      
+//        n1 = addToIndex(n1, 5, 2);
+//        printLinkedListV2(n1);
+//        n1 = addToIndex(n1, 4, 1);
+//        printLinkedListV2(n1);
+//        
+//        Node n4 = new Node(4);
+//        n1 = remoteAtTail(n1);
+//        n1 = remoteAtTail(n1);
+//        n1 = remoteAtTail(n1);
+//        printLinkedList(n1);
+//        printLinkedList(n4);
         
+      
+        printLinkedListV2(n1);
     }
     
 }
