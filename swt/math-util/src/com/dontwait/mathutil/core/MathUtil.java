@@ -32,7 +32,9 @@ public class MathUtil {
         long product = 1; //tích nhân dồn, thuật toán con heo đất
         for (int i = 2; i <= n; i++) 
             product *= i;
+        
         return product;
+    
     }//để dành kiểu đệ quy
     public static long getFactorialByUsingRecrution(int n) {
         if (n < 0 || n > 20)
