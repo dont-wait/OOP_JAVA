@@ -1,5 +1,4 @@
-# Welcome to my Second Repository - Source code OOP_Java by giáo.làng
-
+# Welcome to my Second Repository - Source code OOP_Java
 ## You will find in this repo:
 
 * NetBeans Apache Ant project including JUnit Test
