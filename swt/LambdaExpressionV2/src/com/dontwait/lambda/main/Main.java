@@ -35,7 +35,14 @@ public class Main {
         //gọi nó sau khi code xong
         //loại bỏ lun cái tên hàm
         
-        Salutation helloJP = (String msg) -> {System.out.println(msg);};
+        //Salutation helloJP = (String msg) -> {System.out.println(msg);};
+        //sửa lại gọn hơn nữa
+        //Salutation helloJP = msg -> System.out.println(msg);
+        Salutation helloJP = msg -> {
+            System.out.println("Lambda thú vị vãi");
+            System.out.println(msg);
+        };
+        
         helloJP.sayHello("Hello, hờ en tờ ai");
     }
-}
+}   

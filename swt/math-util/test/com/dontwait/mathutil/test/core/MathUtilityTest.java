@@ -99,7 +99,31 @@ public class MathUtilityTest {
     }
     
     //cách khác để bắt ngoại lệ xuất hiện, viết tự nhiên hơn!!!
-    
-    
-    
+    //xài Lambda
+    //Test case: hàm sẽ ném về ngoại lệ nếu nhận vào 21
+    //Tui cần thấy màu xanh khi chơi với 21! 
+    @Test 
+    public void testGetFactorialGivenWrongArgumentThrowsException_Lambda() {
+        //Assert.assertThrows(tham số 1: ngoại lệ muốn so sánh, 
+        //                    tham số 2: đoạn code chạy văng ra ngoại lệ ngoại runable);
+        Assert.assertThrows(IllegalArgumentException.class,
+                                            () -> MathUtil.getFactorial(-5));
+        //MathUtil.getFactorial(-5);  //hàm @Test chạy, hay hàm getF() chạy
+                                       
+    }
+    //Bắt ngoại lệ, xem hàm có ném ngoại lệ hay không khi n cà chớn
+    //có ném, tức là hàm chạy đúng thiết kế -> xanh
+    @Test 
+    public void testGetFactorialGivenWrongArgumentThrowsException_TryCatch() {
+        //chủ động kiểm soát ngoại lệ!!!
+        try {
+            MathUtil.getFactorial(-5); 
+        } catch (Exception e) {
+            //bắt try-catch là JUNIT sẽ ra xanh do đã chủ động kiểm soát ngoại lệ
+            //nhưng ko chắc ngoại lệ mình cần có xuất hiện hay ko???
+            //có đoạn code kiểm soát đúng ngoại lệ IllegalArgumentException xh
+            Assert.assertEquals("Invalid argument. N must be between 0..20", e.getMessage());
+        }
+     
+    }
 }
