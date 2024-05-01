@@ -615,6 +615,55 @@ server - 									khai báo các hành động để
 										từ code -> chất lượng code-> app
 										-> lên server luôn
 
+CI Tool: là phần mềm làng nghe server code, coi có ai cập nhật code hok
+		nếu có, nó sẽ kích hoạt chạy bộ Unit Test, kiểm tra xanh đỏ
+		XANH -> ko vấn đề
+		Đỏ       -> tự động gủi mail chửi tay dev vừa đưa code lên
+		Lặp lại liên tục  quá trình này -> Continous Integration
+
+Ngày xưa, GitHub chỉ làm vai trò server code
+		phần CI để cho tool khác cho: JENKINS, CIRCLE CI, TEAM CITY, BAMBOO CI,,...
+Ngày nay, GitHub tích hợp lun tool lắng nghe vào trong GitHub, gọi là GitHub Actions
+
+-----------------------------------
+NETBEAN 8. mặc định khi tạo project, tạo UnitTest, clean &build nó ko chạy bộ Unit Test để kiểm tra xanh đỏ
+-			dù gọi trực tiếp clean &  build trong NB hay gọi ở cửa sổ cmd bằng lệnh ANT
+			Muốn NB 8.0 khi đóng gói app chạy bộ Test trước khi đóng gói (.jar, .war)
+			ta phải độ lại tập tin build-impl.xml bằng cách gọi lệnh test trong tập lên .xml này
+			mở file tìm dòng 1005, bổ sung thêm (NETBEAN 13. 1205)
+			
+			<target depends="init,compile,
+			<target depends="init,compile,test,
+			NB 13 ko cần làm, mặc định ANT sẽ chạy test ở cmd
+						    nhưng vẫn cần chỉnh sửa ở trong file này khi clean & build trong NB	
+Tất cả các CI Tool đều hoạt động dựa trên nguyên tắc
+	- nó có 1 tập lệnh cấu hình sẵn, mình lựa chọn thao tác muốn dùng
+	- ví dụ: yêu cầu GitHub báo cho tool biết ai vừa sửa code
+			kích hoạt bộ lệnh gom code về máy server nào đó
+			gọi người kiến ANT biên dịch code đã gom, sau đó chạy test, ổn đóng gói .JAR .WAR
+											ko ổn chửi
+	- lệnh ko hà
+		- lệnh qua UI, click các option
+		- gõ lệnh trong tập kịch bán, có đuôi mở rộng là .YML .YAML (dza-mồ)
+
+------------------
+CHƠI CI VỚI GITHUB ACTION
+- Tạo tập lẹnh - script - file .yml lưu kèm với project để sau đó cứ ai sửa code, file này đc chạy và XANH ĐỎ
+	xuất hiện
+- Vấn đề là: Java Project thì có nhiều style bố trí code khác nhau (code giống nhau - thư mục chứa code
+												khác nhau)
+										- ANT
+										- MAVEN
+										- GRADLE
+FILE .YML  cunghx phải viết khác nhau chút đỉnh liên quan đến style bố trí code
+
+
+
+
+-----------------------------------
+
+
+
 2. INTEGRATION TEST
 
 3. SYSTEM TEST
