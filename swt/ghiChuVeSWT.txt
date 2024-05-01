@@ -465,6 +465,155 @@ NetBeans viết code: 8.2 -> JUnit 4x
 		Assert.assertEqual(1, .getF(0));
 		Assert.assertEqual(1, .getF(1));
 		Assert.assertEqual(720, .getF(6)); truyền thống
+	
+	Unit Test FW thường có: 
+	- nhóm hàm assertX() để so sánh expected và actual
+	- nhóm hàm bắt ngoại lệ coi có xuất hiện ngoại lệ xh sẽ là màu đỏ nhưng nếu kiểm soát nó, thì là xanh
+	- tách data và câu lệnh test hàm ra riêng biệt DDT
+	- chạy song song các test cases
+	- gài ràng buộc (dependency) giữa các test casse, ví dụ login thành công thì mới CRUD
+		nếu test case login thành công -> chạy mấy test case sau login
+					    thất bại -> những test case sau login vô nghĩa
+	- generate ra các report/báo cáo/bản thống kê code lỗi ở những test case nào
+	- chạy ở chế độ console/command line (giống chạy Ant có chạy test luôn) - Test Runner
+	- generate luôn giùm các test cases để ta chỉ việc modify thay vì phải viết từ đầu như mấy bữa nay
+
+GITHUB và CI - Continous Integraiton
+				TDD Unit Test, DDT
+
+Linus Torvalds
+
+UNIX -> MacOS
+	      Linux, open-source
+			RedHat, Debian, Fedora, Uuntu, Kali,...
+	      Git (kĩ thuật, công nghệ phần mềm quản lí source)
+			open-source	
+			
+			  GitHub, GitLab, BitBucket cung cấp giải pháp lưu trữ code online
+												quản lí code online
+				miễn phí và có trả tiền theo dung lượng lưu trữ, số member tham 
+				gia vào dự án có luu code ỏ trên 3 nền tảng này
+		Quản lí code:
+			- lưu trữ code (Drive.. cx làm đc)
+			- share code cho mọi người cùng tham gia sửa (Drive...cx làm đc)
+			- Tracking history chỉnh sửa code - quản lí các phiên bản code - version của code
+									    - quản lí sự thay đổi của các dong code
+									    - ai thêm code, thêm ngày giờ nào,
+									      dòng code nào? (Drive..bó tay)
+			- Undo lại code kể từ ngày đầu tiên đoạn lưng chừng (Drive..bó tay)
+			- Anh em đè code lẫn nhau, do sơ ý, do cùng làm trên 1 project, 1 tập tin xoá lộn code
+							của nhau, cả 2 cùng update trên 1 tập tin -> CONFLICT (Drive... bó tay)
+			- Đồng bộ code của anh em khác, merge code của anh em khác
+							tao là FE máy tao
+							mày làm BE máy mày
+							gộp lại thành project chung, tao mày đêu có ở máy riêng
+								(Drive... bó tay)
+			- Copy/paste project để thí nghiệm thử, sau đó đc thì xài, ko thì xoá
+						trước giờ làm thủ công ở local/máy tính -> Drive... ko làm đc
+
+			TẤT CẢ NHỮNG VẪN ĐÊ TRÊN, GIT LO ĐC HẾT!!!
+
+			Toàn bộ những vấn đề nêu trên cần tool nào đó để quản lí thì tuyệt vời cho dân DEV
+			tiết kiệm cực nhiều công sức cho việc quản lí sự thay đổi trong code khi làm việc teamwork
+			-> các tool làm việc này gọi chụng là: VCS: Version Control System
+										SCM: Source Code Management System	vd: SCM: GitHub
+			Tool công nghệ cũ: SVN( Subversion)
+							Source Safe
+			Tool công nghệ mới: Git
+									và phiên bản implement để xài: GitHub, GitLab, BitBucket
+																(MS)	
+		Mô hinh hoạt động Git/ GitHub/...
+
+		Máy dev (locacl workspace)			GitHub server (cloud, trên mạng)
+											GitLab server (cloud, trên mạng)
+														...
+
+					--------------------> đẩy code lên server - check-in thuật ngữ chung SCM
+													push thuật ngữ riêng cho Git
+		down code về<-------------------- check-out thuật ngữ chung SCM
+									git clone
+									git pull			lệnh của Git
+
+
+		Máy dev khác (local workspace)		GitHub server (cloud, trên mạng)
+											GitLab server (cloud, trên mạng)
+														...
+
+					--------------------> đẩy code lên server - check-in thuật ngữ chung SCM
+													push thuật ngữ riêng cho Git
+		down code về<-------------------- check-out thuật ngữ chung SCM
+									git clone
+									git pull			lệnh của Git
+
+* Code để ở trên Server GitHub/GitLab sẽ được đặt trong 1 folder - chính là tên folder
+   chứa code ở local. Folder chứa code/project/.solution trên server GitHub đc gọi tên là
+  REPOSITORY/REPO - KHO CODE
+
+  Mỗi project tương ứng 1 kho
+ Lưu ý: TÊN KHO NÊN (RẤT NÊN) TRÙNG 100% CẢ HOA THƯỜNG VỚI THƯ MỤC CHỨA CODE
+		PROJECT CHỨA CODE Ở LOCAL
+
+CÁCH CHƠI GITHUB
+1. Tạo trên server 1 kho trùng tên (100% hoa thường với tên project ở local)
+git pull = git fetch + git merge
+git merge (original main/branch)
+git conflict
+git checkout branch/commit
+
+git init //khởi động cái thư mục code ở local, chuẩn bị sẵn sàng đồng bộ lên server
+	    //tự tạo ra 1 folder .git\ẩn. chứa nhật kí thay đổi code ở local
+	   //cấm tuyệt đối xoá, sửa thư mục này, xem okie
+
+git add .  //lệnh này báo với git rằng tao cần upload tất cả các  tập tin/folder trong
+		 //local lên server
+		 //lên server hết trơn, kể cả thằng có dấu .
+		 //dĩ nhiên ko lên những thằng có tên trong git ignore
+
+git add * //lệnh này báo với git rằng tao cần upload tất cả các  tập tin/folder trong
+		 //local lên server; để lại những thằng
+		 //có trong .gitignore, và những thằng trong tên gọi có dấu . ở đầu tên
+		 //những tập tin tên gọi xuất phát là dấu . thì ở lại local lun
+git commit -m "thông-báo-cho-team-biết-mình-update-gì-trong-kho-chung-trên-server"
+
+lưu ý khi đi thực tập
+mỗi lần đưa code lên server phải ghi rõ lí do, thường là câu ngắn tóm tắt lại lần 
+mình update code, cấm ghi "Ahihi" "Test"
+
+git bracnch -M main báo với git vào room-phòng chính chứa project ở local lấy code
+===============================================================
+NHẬP MÔN CI - CONTINOUS INTEGRATION - TÍCH HỢP LIÊN TỤC
+
+Là kĩ thuật đảm bảo chất lượng code của cả TEAM, ko riêng của cá nhân
+Vì code của dự  án là do sự đóng góp của nhiều thành team member, 1 dự án có nhiều dev cùng 
+code
+Mỗi dev phải đảm bảo code mình ngon!!!
+và phải đảm bảo code mình cùng chung sống với code bạn trong cùng project cũng ngon
+cả dự á code phải ngon, cả dự án phải màu XANH mới ổn
+XANH trên tất cả code của ae dev team gom về server
+CODE TRÊN SERVER PHẢI XANH CHO TẤT CẢ!!!
+CI là kĩ thuật gom code của anh em lên server phải đảm bảo XANH cho tất cả khi gom
+			(INTEGRATION - TÍCH HỢP)
+việc gom này diễn ra rất nhiều lần do code kéo dài thời gian cả tháng, cả năm, n người cùng
+làm -> việc kiểm tra XANH cho tất cả phải làm LIÊN TỤC LIÊN TỤC LIÊN TỤC
+- TÍCH HỢP LIÊN TỤC XUẤT HIỆN: TIẾN HÀNH KIỂM TRA CODE TOÀN DỰ ÁN LA MÀU XANH
+							     DIỄN RA LIÊN TỤC LIÊN TỤC KHI SERVER ĐC AI ĐÓ DEV
+							     NÀO ĐÓ CHỈNH SỬA CODE
+nói cách khác: mỗi lần ai sửa code/update code lên server, MÀU XANH cho tất cả đc chạy
+ngay, kích hoạt ngay tiến trình kiểm tra XANH khi code server bị thay đổi
+
+- Muốn làm CI cần:
+	- Source code của các anh em (dự án mà)
+	- Server chứa code để gom code
+	- Unit Test cho toàn dự án để có XANH ĐỎ
+	- Kích hoạt quy trình chạy Unit Test khi có bất ki gã dev nào sửa code trên server
+	- Notify đc XANH ĐỎ tới team member khi có problem ĐỎ
+	- Tự động việc làm ở trên, ko chạy = cơm
+			ta cấu hinh server và những thứ liên quan để tạo quy trình XANH ĐỎ 1 cách tự
+động
+	Rẽ nhánh đi làm: CI/CD/DevOps ko code app, code cho quy trình XANH ĐỎ, deploy lên
+server - 									khai báo các hành động để
+										từ code -> chất lượng code-> app
+										-> lên server luôn
 
 2. INTEGRATION TEST
 
